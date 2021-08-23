@@ -13,6 +13,9 @@ import { useToasts } from 'react-toast-notifications';
 import FormControl from '@material-ui/core/FormControl';
 
 const useStyles = makeStyles({
+  root: {
+    height: '100vh'
+  },
   heading: {
     fontSize: '28px',
     margin: '18px 0',
@@ -166,7 +169,7 @@ const Contribute = ({fetchGetHelpPost}) => {
   };
 
   return (
-    <Grid container justify="center" alignItems="center">
+    <Grid container className={classes.root} justify="center">
       <Grid item xs={12} md={11}>
         <Grid container justify="center" alignItems="center">
           <Grid item xs={12}>

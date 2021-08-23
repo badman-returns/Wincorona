@@ -32,9 +32,9 @@ const Home = ({ getHelpPosts, setSearchQuery }) => {
                 confirmButtonColorSecondary={false}
               />
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <p>&copy;Copyright 2021 by <a href="https://www.artificialbrix.com/" target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>Artificial Brix</a></p>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </Grid>

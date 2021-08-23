@@ -5,6 +5,9 @@ import NeedHelpPost from './NeedHelpResult/NeedHelpResult'
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
+    root: {
+        height: '100vh',
+    },
     heading: {
         fontSize: '28px',
         margin: '14px 0',
@@ -35,7 +38,7 @@ const NeedHelp = (props) => {
 
 
     return (
-        <Grid container justify='center' alignItems='center' >
+        <Grid className={classes.root} container justify='center'>
             <Grid item xs={12} md={11} >
                 <Grid container justify='center' alignItems='center'>
                     <Grid item xs={12}>

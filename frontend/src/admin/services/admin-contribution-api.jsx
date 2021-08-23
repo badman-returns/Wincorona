@@ -21,5 +21,4 @@ const deleteContributionPostById = async (id) => {
     }
 }
 
-
 export { getAdminContributiontData,deleteContributionPostById };

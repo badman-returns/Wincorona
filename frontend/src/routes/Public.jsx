@@ -18,6 +18,7 @@ const useStyles = makeStyles({
   root: {
     backgroundImage: `url(${BackGroundData})`,
     width: '100%',
+    height: '100%',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     padding: '18px 0 0 0',

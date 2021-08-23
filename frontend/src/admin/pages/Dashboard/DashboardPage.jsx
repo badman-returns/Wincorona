@@ -32,7 +32,7 @@ const DashboardPage = ({userData, helpData, contactData, contributionData}) => {
         <>
             <div className={classes.container}>
                 <Grid container justify='center' alignItems='center' spacing={2}>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} >
                         <Grid container justify='center' alignItems='center'>
                             <h3>Welcome to Dashboard</h3>
                         </Grid>

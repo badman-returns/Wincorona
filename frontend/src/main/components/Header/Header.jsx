@@ -90,7 +90,7 @@ const Header = () => {
 
                                 </Grid>
                                 <Grid item>
-                                <p className={classes.heading}>WIN-COVID</p>
+                                <p className={classes.heading}>WIN CORONA</p>
 
                                 </Grid>
                             </Grid>

@@ -81,9 +81,6 @@ const ContributeCard = () => {
               <Grid item xs={12}>
                 <p className={classes.text}>We have been working hand in hand to fight against this pandemic situation.</p>
               </Grid>
-              <Grid item xs={12}>
-                <p className={classes.text}>#Covid-19_Support #Student_Community #Artificial_Brix</p>
-              </Grid>
             </Grid>
           </Grid>
         </Grid>

@@ -124,7 +124,7 @@ const ContributionsPage = ({ contributionData, refreshContributionData }) => {
                     </Grid>
                 </AppBar>
                 <Grid container justify='center' alignItems='center' >
-                    {requiredData.length == 0 && resultState && searchKey.length >= 4 && <h3>No Results found</h3>}
+                    {requiredData.length === 0 && resultState && searchKey.length >= 4 && <h3>No Results found</h3>}
                     
                     {
 

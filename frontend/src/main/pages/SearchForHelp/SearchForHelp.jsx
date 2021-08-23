@@ -6,6 +6,9 @@ import SearchPost from './SearchResult/SearchResult'
 import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
+  root:{
+    height: '100vh',
+  },
   heading: {
     fontSize: '28px',
     margin: '14px 0',
@@ -76,7 +79,7 @@ const SearchForHelp = ({ searchQuery }) => {
   const classes = useStyles();
 
   return (
-    <Grid container justify="center" alignItems="center">
+    <Grid container justify="center">
       <Grid item xs={12} md={11} style={{ minHeight: '100vh' }}>
         <Grid container justify="center" alignItems="center" >
           <Grid item xs={12}>
