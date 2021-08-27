@@ -12,6 +12,7 @@
     "dev": "ts-node ./src/server.ts",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "start": "node ./dist/server.js",
+    "postinstall": "npm install --prefix backend && npm run build --prefix backend",
     "local": "nodemon"
   },
   "author": "Trishnangshu Goswami and Udaya",
