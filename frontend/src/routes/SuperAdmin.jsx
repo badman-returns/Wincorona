@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 const SuperAdminRouter = () => {
 
     const [user, setUser] = useState([]);
-    const [help, setHelp] = useState([])
+    const [help, setHelp] = useState([]);
     const [contact, setContact] = useState([]);
     const [contribution, setContribution] = useState([]);
 

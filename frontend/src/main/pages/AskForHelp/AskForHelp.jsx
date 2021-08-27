@@ -12,6 +12,9 @@ import { useToasts } from 'react-toast-notifications'
 import AlertDialog from '../../components/AlertDialog/AlertDialog';
 import FormControl from '@material-ui/core/FormControl';
 const useStyles = makeStyles({
+  root: {
+    height: '100vh',
+  },
   heading: {
     fontSize: '28px',
     margin: '18px 0',
@@ -156,6 +159,7 @@ const AskForHelp = ({ fetchGetHelpPost }) => {
   };
 
   return (
+    <div className={classes.root}>
     <Grid container justify="center" alignItems="center">
       <Grid item xs={12} md={11}>
         <Grid container justify="center" alignItems="center">
@@ -374,6 +378,7 @@ const AskForHelp = ({ fetchGetHelpPost }) => {
         confirmButtonColorSecondary={false}
       />
     </Grid>
+    </div>
   );
 };
 

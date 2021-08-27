@@ -89,7 +89,6 @@ const ContributionsPage = ({ contributionData, refreshContributionData }) => {
         }
     }
 
-
     return (
         <>
             <div className={classes.container}>
