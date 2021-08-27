@@ -66,6 +66,6 @@ const GetHelpPostSchema = new Schema({
     }
 })
 
-const GetHelpPost: Model<Help> = mongoose.model('need-help', GetHelpPostSchema);
+const GetHelpPost: Model<Help | any> = mongoose.model('need-help', GetHelpPostSchema);
 
 export { GetHelpPost };

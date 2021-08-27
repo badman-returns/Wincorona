@@ -76,6 +76,6 @@ const ContributionSchema = new Schema({
     }
 })
 
-const ContributorPost: Model<Contribution> = mongoose.model('contributions', ContributionSchema);
+const ContributorPost: Model<Contribution | any> = mongoose.model('contributions', ContributionSchema);
 
 export { ContributorPost };

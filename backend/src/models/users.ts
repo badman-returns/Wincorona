@@ -31,6 +31,6 @@ const UserSchema = new Schema({
     },
 })
 
-const Users: Model<User> = mongoose.model('users', UserSchema);
+const Users: Model<User | any> = mongoose.model('users', UserSchema);
 
 export { Users };
