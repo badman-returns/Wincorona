@@ -7,8 +7,8 @@ const dev = {
 
 const prod = {
    url: {
-     baseBackendURL: '',
-     baseAPIURL: '',
+     baseBackendURL: 'https://winc-backend.herokuapp.com',
+     baseAPIURL: 'https://winc-backend.herokuapp.com',
   }
 }
 
