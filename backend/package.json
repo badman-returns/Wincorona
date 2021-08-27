@@ -11,8 +11,8 @@
     "buildWatch": "tsc -w",
     "dev": "ts-node ./src/server.ts",
     "lint": "tslint -p tsconfig.json -c tslint.json",
-    "local": "nodemon",
-    "start": "node dist/server.js"
+    "start": "node ./dist/server.js",
+    "local": "nodemon"
   },
   "author": "Trishnangshu Goswami and Udaya",
   "license": "ISC",
