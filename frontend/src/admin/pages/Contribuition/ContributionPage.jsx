@@ -103,7 +103,7 @@ const ContributionsPage = ({ contributionData, refreshContributionData }) => {
                     <Grid container justify='center' alignItems='center' spacing={2}>
                         <Grid item xs={8}>
                             <TextField
-                                label="Search contributions"
+                                label="Search contributions by pincode"
                                 variant="outlined"
                                 fullWidth
                                 className={classes.inputBox}
