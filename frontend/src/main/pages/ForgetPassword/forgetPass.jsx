@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -18,6 +18,7 @@ export default function ForgetPassword() {
     const [validationState, setValidationState] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    console.log(linkSent);
 
     const submitEmail = (e) => {
         e.preventDefault();
@@ -38,10 +39,6 @@ export default function ForgetPassword() {
         }
 
     }
-
-    useEffect(() => {
-
-    }, [])
 
     const classes = useStyles();
     return (
@@ -72,7 +69,7 @@ export default function ForgetPassword() {
                         variant="contained"
                         color="secondary"
                         className={classes.submit}
-                        disabled={linkSent ? "true": "false"}
+                        disabled={linkSent ? "true": ""} 
                     >
                         Submit
                     </Button>
