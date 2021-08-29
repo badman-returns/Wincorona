@@ -14,6 +14,7 @@ import Login from '../main/pages/Login/Login';
 import Register from '../main/pages/Register/Register';
 import SuperAdminLogin from './../admin/pages/Login/SuperAdminLogin';
 import ForgetPassword from '../main/pages/ForgetPassword/forgetPass';
+import ResetPassword from '../main/pages/ForgetPassword/resetPass';
 
 const useStyles = makeStyles({
   root: {
@@ -96,6 +97,9 @@ const PublicRouter = () => {
           </Route>
           <Route exact path="/forget-password">
             <ForgetPassword />
+          </Route>
+          <Route exact path="/password-reset/:userId/:token">
+            < ResetPassword />
           </Route>
         </Switch>
       </Container>
