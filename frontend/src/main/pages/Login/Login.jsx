@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -21,38 +21,38 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     setValidationState(true)
-    if(email !== ''  && password !== ''){
-        AuthenticationService.login(email, password).then(
-          (res) => {
-            console.log(res)
-            if(res.status === 200){
-              history.push('/');
-              window.location.reload();
-            }else{
-              addToast('Invalid Email or Password or Error in login try again or you do not have account', {
-                appearance: 'error',
-                autoDismiss: true,
-              });
-            }
+    if (email !== '' && password !== '') {
+      AuthenticationService.login(email, password).then(
+        (res) => {
+          console.log(res)
+          if (res.status === 200) {
+            history.push('/');
+            window.location.reload();
+          } else {
+            addToast('Invalid Email or Password or Error in login try again or you do not have account', {
+              appearance: 'error',
+              autoDismiss: true,
+            });
           }
-        ).catch((err)=>{
-          console.log(err)
-          addToast('Invalid Email or Password or Error in login try again or you do not have account', {
-            appearance: 'error',
-            autoDismiss: true,
-          });
-        })
+        }
+      ).catch((err) => {
+        console.log(err)
+        addToast('Invalid Email or Password or Error in login try again or you do not have account', {
+          appearance: 'error',
+          autoDismiss: true,
+        });
+      })
     }
-    
+
   }
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
-    if (token){
+    if (token) {
       history.push('/');
       window.location.reload();
     }
-  },[history])
+  }, [history])
 
   const classes = useStyles();
   return (
@@ -73,8 +73,8 @@ export default function Login() {
             name="email"
             value={email}
             autoFocus
-            error = {validationState && email === ''}
-            onInput={(e)=>setEmail(e.target.value)}
+            error={validationState && email === ''}
+            onInput={(e) => setEmail(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -85,8 +85,8 @@ export default function Login() {
             type="password"
             id="password"
             value={password}
-            error = {validationState && password === ''}
-            onInput={(e)=>setPassword(e.target.value)}
+            error={validationState && password === ''}
+            onInput={(e) => setPassword(e.target.value)}
           />
           <Button
             type="submit"
@@ -99,8 +99,15 @@ export default function Login() {
           </Button>
           <Grid container>
             <Grid item xs>Do not have a account &nbsp;
-              <span onClick={()=>history.push('/register')} className={classes.link}>
-                 Register?
+              <span onClick={() => history.push('/register')} className={classes.link}>
+                Register?
+              </span>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs>
+              <span onClick={() => history.push('/forget-password')} className={classes.link}>
+                Forget Password
               </span>
             </Grid>
           </Grid>
@@ -118,7 +125,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit">
-        Artificial Brix
+        Trishnangshu Goswami
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -131,7 +138,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    minHeight:'100vh'
+    minHeight: '100vh'
   },
   avatar: {
     margin: theme.spacing(1),
@@ -144,11 +151,11 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  link:{
-    color:'#3f51b5',
-    '&:hover':{
-        textDecoration:'underline',
-        cursor:'pointer'
+  link: {
+    color: '#3f51b5',
+    '&:hover': {
+      textDecoration: 'underline',
+      cursor: 'pointer'
     }
   }
 }));

@@ -12,7 +12,8 @@ import SearchForHelp from '../main/pages/SearchForHelp/SearchForHelp';
 import ScrollToTop from '../utility/scroll-to-top';
 import Login from '../main/pages/Login/Login';
 import Register from '../main/pages/Register/Register';
-import SuperAdminLogin from './../admin/pages/Login/SuperAdminLogin'
+import SuperAdminLogin from './../admin/pages/Login/SuperAdminLogin';
+import ForgetPassword from '../main/pages/ForgetPassword/forgetPass';
 
 const useStyles = makeStyles({
   root: {
@@ -60,40 +61,43 @@ const PublicRouter = () => {
   return (
     <div className={classes.root}>
       <Container maxWidth="md" className={classes.container}>
-          <ScrollToTop />
+        <ScrollToTop />
 
-          <Switch>
-            {/* Super Admin Routes */}
-            <Route exact path='/private/login'>
-              <SuperAdminLogin />
-            </Route>
-            {/* Login Routes */}
-            <Route exact path='/login'>
-              <Login />
-            </Route>
-            {/* Register Routes */}
-            <Route exact path='/register'>
-              <Register />
-            </Route>
-            <Route exact path="/get-help">
-              <SearchForHelp searchQuery={searchQuery} />
-            </Route>
-            <Route exact path="/ask-for-help">
-              <AskForHelp fetchGetHelpPost={fetchGetHelpPost} />
-            </Route>
-            <Route exact path="/help-us-posts">
-              <NeedHelp getHelpPosts={getHelpPosts} />
-            </Route>
-            <Route exact path="/contribute">
-              <ContributeUs fetchGetHelpPost={fetchGetHelpPost} />
-            </Route>
-            <Route exact path="/">
-              <Home
-                getHelpPosts={getHelpPosts}
-                setSearchQuery={setSearchQuery}
-              />
-            </Route>
-          </Switch>
+        <Switch>
+          {/* Super Admin Routes */}
+          <Route exact path='/private/login'>
+            <SuperAdminLogin />
+          </Route>
+          {/* Login Routes */}
+          <Route exact path='/login'>
+            <Login />
+          </Route>
+          {/* Register Routes */}
+          <Route exact path='/register'>
+            <Register />
+          </Route>
+          <Route exact path="/get-help">
+            <SearchForHelp searchQuery={searchQuery} />
+          </Route>
+          <Route exact path="/ask-for-help">
+            <AskForHelp fetchGetHelpPost={fetchGetHelpPost} />
+          </Route>
+          <Route exact path="/help-us-posts">
+            <NeedHelp getHelpPosts={getHelpPosts} />
+          </Route>
+          <Route exact path="/contribute">
+            <ContributeUs fetchGetHelpPost={fetchGetHelpPost} />
+          </Route>
+          <Route exact path="/">
+            <Home
+              getHelpPosts={getHelpPosts}
+              setSearchQuery={setSearchQuery}
+            />
+          </Route>
+          <Route exact path="/forget-password">
+            <ForgetPassword />
+          </Route>
+        </Switch>
       </Container>
     </div>
   );
