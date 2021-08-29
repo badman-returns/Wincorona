@@ -3,7 +3,7 @@ import multer from "multer";
 import { LoadAuthorization, ValidateBearerToken, ValidateBasicAuth, LoadAuthorizedUser } from "../../middleware/common.middleware";
 import { DeleteContributionById, GetContributionsByUserId, PostContributionByUserId, UpdateContributionById } from "./controller/public.user.contribution.controller";
 import { PostHelp, PostContact, GetContribution, GetHelp } from "./public.controller";
-import { LoginByEmailAndPassword, Register } from "./public.user.controller";
+import { ForgetPassword, LoginByEmailAndPassword, Register, ResetPassword, VerifyResetToken } from "./public.user.controller";
 import { ValidateRegistrationData } from "./public.user.validator";
 import { ValidateBasicDetails, ValidateContactPost, ValidateSearchDetails } from "./public.validator";
 import { ValidateDeleteContributionData, ValidatePostContributionData, ValidateUpdateContributionData } from "./validators/public.contribution.validator";
@@ -23,6 +23,11 @@ class Public {
 
         // Login Routes
         this.router.get('/user/authentication', [...ValidateBasicAuth, ...LoadAuthorization], LoginByEmailAndPassword);
+
+        // Forget Password Routes
+        this.router.post('/user/forget-password', [], ForgetPassword);
+        this.router.post('/password-reset/:userId/:token', [], VerifyResetToken);
+        this.router.post('/user/update-password', [], ResetPassword);
 
         // Contributor Routes 
         this.router.get('/user/contribution', [...ValidateBearerToken, ...LoadAuthorization, ...LoadAuthorizedUser], GetContributionsByUserId);

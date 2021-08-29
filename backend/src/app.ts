@@ -77,7 +77,7 @@ class App {
         this.app.get('/', (req: Request, res: Response, next: NextFunction) => {
             res.send('Back end API, you no need to bother');
         });
-        this.app.use('/api/v2', this.apiV2Routes);
+        this.app.use('/api/v1', this.apiV2Routes);
         this.apiV2Routes.use('/', PublicRouter);
         this.apiV2Routes.use('/admin', AdminRouter);
     }
