@@ -76,7 +76,7 @@ const ContributeCard = () => {
           <Grid item xs={8}>
             <Grid container>
               <Grid item xs={12}>
-                <h3 className={classes.heading}>Enter your lead</h3>
+                <h3 className={classes.heading}>Contribute or Post relevant information by clicking here</h3>
               </Grid>
               <Grid item xs={12}>
                 <p className={classes.text}>We have been working hand in hand to fight against this pandemic situation.</p>
