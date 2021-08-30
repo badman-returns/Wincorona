@@ -16,13 +16,14 @@ class DefaultAdminUser {
         const email = process.env.SUPER_ADMIN_EMAIL;
         const phone = process.env.SUPER_ADMIN_PHONE;
         const role = UserRole.ADMIN;
+        const active = true;
         const password = Encryption.encryptPassword(process.env.SUPER_ADMIN_PASSWORD);
 
         try {
             const defaultUserAdmin = await Users.findOne({ email: email });
             if (!defaultUserAdmin) {
                 await Users.create({
-                    name, email, phone, role, password,
+                    name, email, phone, role, active, password,
                 });
             }
             else {

@@ -15,6 +15,7 @@ import Register from '../main/pages/Register/Register';
 import SuperAdminLogin from './../admin/pages/Login/SuperAdminLogin';
 import ForgetPassword from '../main/pages/ForgetPassword/forgetPass';
 import ResetPassword from '../main/pages/ForgetPassword/resetPass';
+import VerifyEmail from '../main/pages/Register/VerifyEmail';
 
 const useStyles = makeStyles({
   root: {
@@ -100,6 +101,9 @@ const PublicRouter = () => {
           </Route>
           <Route exact path="/password-reset/:userId/:token">
             < ResetPassword />
+          </Route>
+          <Route exact path='/verify-email/:userId/:token'>
+            <VerifyEmail />
           </Route>
         </Switch>
       </Container>

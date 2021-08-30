@@ -7,6 +7,7 @@ interface User extends Document {
     phone: string | number,
     password: string,
     role: string,
+    active: boolean,
     createdOn: Date,
 }
 

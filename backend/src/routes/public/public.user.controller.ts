@@ -18,6 +18,7 @@ class PublicUserController {
         const phone = req.body.phone;
         const password = Encryption.encryptPassword(req.body.password);
         const role = UserRole.USER;
+        const active = false;
         let response: ResponseObject<any>;
         try {
             const user = await Users.create({
@@ -25,15 +26,89 @@ class PublicUserController {
                 email,
                 phone,
                 role,
+                active,
                 password,
             });
+
+            let token = await Token.findOne({ userId: user._id });
+            if (!token) {
+                token = await new Token({
+                    userId: user._id,
+                    token: await Encryption.createToken({ userId: user._id }),
+                }).save();
+            }
+            token = await Token.find({ userId: user._id }, { token: 1 })
+            const verificationLink = `${process.env.BASE_URL}/verify-email/${user._id}/${token[0]._doc.token}`;
+            const mailData: MailRequestModel = {
+                reciever: {
+                    to: email,
+                    cc: [],
+                    bcc: []
+                },
+                subject: `Wincorona Email Verification`,
+                content: `Please click on the link to verify your email address within one hour of recieving it:\n` +
+                    `Activate your account by clicking on the link above\n\n` +
+                    `${verificationLink}\n\n` +
+                    `Regards\n` +
+                    `Wincorna Team`
+            }
+            await Mailer.sendEmail(mailData);
             response = {
-                ResponseData: user._id,
-                ResponseMessage: 'User created',
+                ResponseData: null,
+                ResponseMessage: `Email verification link sent to ${email} address. Activate account by verifying email.`,
             }
             return res.send(response);
         }
         catch (error) {
+            console.log(error);
+            return res.status(500).end();
+        }
+    }
+
+    public static verifyEmailAndActivateAccount = async (req: AuthenticatedRequest, res: Response) => {
+        const userId = req.params.userId;
+        const activationToken = req.params.token;
+        let response: ResponseObject<any>;
+        try {
+            const confirmUser: User = await Users.findOne({ _id: userId });
+            if (!confirmUser) {
+                res.status(403).send({
+                    Message: `You don't have account with us`,
+                });
+            }
+            else if (confirmUser && confirmUser.active === true) {
+                res.status(403).send({
+                    Message: `Your account is already activated`,
+                    Data: null,
+                });
+            }
+            else {
+                let user = confirmUser.toJSON();
+
+                let validToken: TokenObject = await Token.findOne({
+                    userId: userId,
+                    token: activationToken
+                });
+    
+                if (!validToken) {
+                    return res.status(400).send('Invalid Token or Expired');
+                }
+                else {
+                    await Users.updateOne({ _id: user._id }, {
+                        $set: {
+                            active: true
+                        }
+                    });
+                    await Token.deleteOne({ userId: user._id });
+                }
+                response = {
+                    ResponseData: null,
+                    ResponseMessage: `User with  id ${userId} is activated`
+                }
+            }
+            return res.send(response);
+
+        } catch (error) {
             console.log(error);
             return res.status(500).end();
         }
@@ -67,7 +142,13 @@ class PublicUserController {
                     Message: `Incorrect password!`,
                     Data: null,
                 });
-            } else {
+            } else if (user && !user.active) {
+                res.status(401).send({
+                    Message: `User account not activated yet`,
+                    Data: null,
+                });
+            }
+            else {
                 delete user.password;
                 delete user.createdOn;
                 let token: any;
@@ -89,6 +170,7 @@ class PublicUserController {
 
     public static forgetPassword = async (req: AuthenticatedRequest, res: Response) => {
         const email = req.body.email;
+        let response: ResponseObject<any>;
         try {
             const confirmUser: User = await Users.findOne({ email: email });
             let user = confirmUser.toJSON();
@@ -118,10 +200,16 @@ class PublicUserController {
                 content: `You are receiving this mail because you (or someone else) have requested the reset of the password for your account.\n\n` +
                     `Please click on the link within one hour of recieving it:\n\n ` +
                     `${verificationLink}\n\n` +
-                    `If you did not request this, please ignore this email and your password will remail unchanged.\n`
+                    `If you did not request this, please ignore this email and your password will remail unchanged.\n` +
+                    `Regards\n` +
+                    `Wincorna Team`
             }
             await Mailer.sendEmail(mailData);
-            res.send('Password reset link successfully sent to your registered email account.');
+            response = {
+                ResponseData: null,
+                ResponseMessage: `Password reset link successfully sent to ${email}. Please verify by clicking on the given link`,
+            }
+            return res.send(response);
 
         } catch (error) {
             console.log(error);
@@ -180,12 +268,14 @@ class PublicUserController {
 }
 
 const Register = PublicUserController.registerUser;
+const VerifyEmailAndActivateAccount = PublicUserController.verifyEmailAndActivateAccount;
 const LoginByEmailAndPassword = PublicUserController.loginByEmailAndPassword;
 const ForgetPassword = PublicUserController.forgetPassword;
 const VerifyResetToken = PublicUserController.verifyResetToken;
 const ResetPassword = PublicUserController.resetPassword;
 export {
     Register,
+    VerifyEmailAndActivateAccount,
     LoginByEmailAndPassword,
     ForgetPassword,
     VerifyResetToken,
