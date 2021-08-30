@@ -24,7 +24,7 @@ export default function Login() {
     if (email !== '' && password !== '') {
       AuthenticationService.login(email, password).then(
         (res) => {
-          console.log(res)
+          console.log(res);
           if (res.status === 200) {
             history.push('/');
             window.location.reload();
@@ -36,7 +36,7 @@ export default function Login() {
           }
         }
       ).catch((err) => {
-        console.log(err)
+        // console.log(err)
         addToast('Invalid Email or Password or Error in login try again or you do not have account', {
           appearance: 'error',
           autoDismiss: true,

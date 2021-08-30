@@ -12,6 +12,17 @@ const RegisterUser = async (formData) => {
     }
 }
 
+const VerifyEmailandActivateUser = async (data) => {
+    try{
+        const response = await axios.post(`${baseAPIURL}/verify-email/${data.userId}/${data.token}`);
+        return (response);
+    } catch (error) {
+        console.log(error);
+        return (error);
+    }
+}
+
 export {
     RegisterUser,
+    VerifyEmailandActivateUser
 }

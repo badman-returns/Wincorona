@@ -16,13 +16,14 @@ export default function Register() {
   const { addToast } = useToasts();
   const history = useHistory();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('')
-  const [reTypePassword, setReTypePassword] = useState('')
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
-  const [validationState, setValidationState] = useState(false)
-  const [isMatchPassword, setIsMatchPassword] = useState(true)
-  const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false)
+  const [password, setPassword] = useState('');
+  const [reTypePassword, setReTypePassword] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [validationState, setValidationState] = useState(false);
+  const [isMatchPassword, setIsMatchPassword] = useState(true);
+  const [openConfirmationDialog, setOpenConfirmationDialog] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
   const isValidEmail = () => {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return email !== '' && re.test(String(email).toLowerCase());
@@ -42,7 +43,7 @@ export default function Register() {
           appearance: 'success',
           autoDismiss: true,
         });
-        history.push('/login')
+        setIsRegistered(true);
       } else {
         addToast('User already exist or Error in registration try again', {
           appearance: 'error',
@@ -87,87 +88,98 @@ export default function Register() {
       <CssBaseline />
       <div className={classes.paper}>
         <h1>Wincorona</h1>
-        <Typography component="h1" variant="h5">
+        {!isRegistered && (<Typography component="h1" variant="h5">
           Register
         </Typography>
-        <form className={classes.form} onSubmit={handleRegister}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            id="name"
-            label="Name "
-            name="name"
-            autoFocus
-            value={name}
-            error={validationState && name === ''}
-            onInput={(e) => setName(e.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            id="email"
-            label="Email "
-            name="email"
-            value={email}
-            error={validationState && email === ''}
-            onInput={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            error={validationState && (password === '' || !isMatchPassword)}
-            value={password}
-            onInput={(e) => setPassword(e.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="re type assword"
-            label="Retype Password"
-            type="password"
-            id="retype-password"
-            error={validationState && (reTypePassword === '' || !isMatchPassword)}
-            value={reTypePassword}
-            onInput={(e) => setReTypePassword(e.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="phone"
-            label="Phone"
-            id="phone"
-            error={validationState && phone === ''}
-            value={phone}
-            onInput={(e) => setPhone(e.target.value)}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            onClick={handleRegister}
-            className={classes.submit}
-          >
-            Register
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              Already have a account &nbsp;
-              <span className={classes.link} onClick={() => history.push('/login')}>
-                Login?
-              </span>
+        )
+        }
+        {!isRegistered && (
+          <form className={classes.form} onSubmit={handleRegister}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="name"
+              label="Name "
+              name="name"
+              autoFocus
+              value={name}
+              error={validationState && name === ''}
+              onInput={(e) => setName(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              id="email"
+              label="Email "
+              name="email"
+              value={email}
+              error={validationState && email === ''}
+              onInput={(e) => setEmail(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              error={validationState && (password === '' || !isMatchPassword)}
+              value={password}
+              onInput={(e) => setPassword(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              name="re type assword"
+              label="Retype Password"
+              type="password"
+              id="retype-password"
+              error={validationState && (reTypePassword === '' || !isMatchPassword)}
+              value={reTypePassword}
+              onInput={(e) => setReTypePassword(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              name="phone"
+              label="Phone"
+              id="phone"
+              error={validationState && phone === ''}
+              value={phone}
+              onInput={(e) => setPhone(e.target.value)}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={handleRegister}
+              className={classes.submit}
+            >
+              Register
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                Already have a account &nbsp;
+                <span className={classes.link} onClick={() => history.push('/login')}>
+                  Login?
+                </span>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
+          </form>
+        )}
+        {
+          isRegistered && (
+            <Typography component="h1" variant="h5">
+              Email verification link has been sent to your email. Please verify and activate your account.
+            </Typography>
+          )
+        }
       </div>
       <Box mt={8}>
         <Copyright />
@@ -181,7 +193,11 @@ export default function Register() {
         handleConfirm={confirmRegister}
         confirmButtonColorSecondary={false}
       />
+
+
+
     </Container>
+
   );
 }
 
