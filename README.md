@@ -10,10 +10,10 @@ Wincorona is an application developed by me for non profit during the 2nd phase 
 2. Register and Login to Contribute
 - Create an account if you want to contribute or post relevant information about suppliers and edit, update and delete posts according to preference.
 3. Ask for Help
-- If you are not satisfied with the search results you can post your needs in public and anyone visiting the app can view your post and can help accordingly
+- If you are not satisfied with the search results you can post your needs in public and anyone visiting the app can view your post and can help accordingly.
 4. Contact 
 - In case you want to contact the team or the developer, you can fill the form and post.
-5 Admin Panel for Website Owner
+5. Admin Panel for Website Owner
 - Can view total number of contributions made, people requested for help, people trying to contact and total number of users in the dashboard section.
 - Search contribution with pincode in the contribution list section.
 - Can view and edit list of users registered and contact list.
