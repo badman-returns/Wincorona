@@ -4,7 +4,7 @@
 Wincorona is an application developed by me for non profit during the 2nd phase of covid in India when there was a scarcity of oxygen, blood plasma and people were sharing information about oxygen and blood supplier over social media and it was really hard to keep track of those information. This app is design to solve that problem. The application allows to get information related to required items using pincode. Anyone can use their pincode and search oxygen, blood plasma etc and if the information is available it will be shown in the results. If users are not satisfied with the results then they can post in the ask for help section. 
 </p>
 
-[API Documentation]
+[API Documentation] - Documentation generated using Postman.
 
 ## Core Features
 1. Search using Pincode to get relevant results. Input pincode and check required items to search and get results.
