@@ -7,6 +7,7 @@ import { ForgetPassword, LoginByEmailAndPassword, Register, ResetPassword, Verif
 import { ValidateRegistrationData } from "./public.user.validator";
 import { ValidateBasicDetails, ValidateContactPost, ValidateSearchDetails } from "./public.validator";
 import { ValidateDeleteContributionData, ValidatePostContributionData, ValidateUpdateContributionData } from "./validators/public.contribution.validator";
+import { ValidateEmail, ValidateUser } from "./validators/public.forgetAndResetPassword.validator";
 
 class Public {
     public router: express.Router;
@@ -20,15 +21,15 @@ class Public {
 
         // Registration Routes
         this.router.post('/user/register', [this.upload.none(), ...ValidateRegistrationData], Register);
-        this.router.post('/verify-email/:userId/:token', [], VerifyEmailAndActivateAccount);
+        this.router.post('/verify-email/:userId/:token', VerifyEmailAndActivateAccount);
 
         // Login Routes
         this.router.get('/user/authentication', [...ValidateBasicAuth, ...LoadAuthorization], LoginByEmailAndPassword);
 
         // Forget Password Routes
-        this.router.post('/user/forget-password', [], ForgetPassword);
-        this.router.post('/password-reset/:userId/:token', [], VerifyResetToken);
-        this.router.post('/user/update-password', [], ResetPassword);
+        this.router.post('/user/forget-password', [ ...ValidateEmail], ForgetPassword);
+        this.router.post('/password-reset/:userId/:token', [...ValidateUser], VerifyResetToken);
+        this.router.post('/user/update-password', ResetPassword);
 
         // Contributor Routes 
         this.router.get('/user/contribution', [...ValidateBearerToken, ...LoadAuthorization, ...LoadAuthorizedUser], GetContributionsByUserId);

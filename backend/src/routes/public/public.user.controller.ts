@@ -189,7 +189,7 @@ class PublicUserController {
                 }).save();
             }
             token = await Token.find({ userId: user._id }, { token: 1 })
-            const verificationLink = `${process.env.BASE_URL}/#/password-reset/${user._id}/${token[0]._doc.token}`;
+            const verificationLink = `${process.env.BASE_URL}/password-reset/${user._id}/${token[0]._doc.token}`;
             const mailData: MailRequestModel = {
                 reciever: {
                     to: email,

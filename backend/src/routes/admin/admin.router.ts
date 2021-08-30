@@ -1,12 +1,10 @@
 import * as express from "express";
-import multer from "multer";
 import { LoadAuthorization, LoadAuthorizedUser, ValidateBasicAuth, ValidateBearerToken } from "../../middleware/common.middleware";
 import { LoginByEmailAndPassword } from "./admin.controller";
 import { DeleteContributionById, DeleteContactById, DeleteHelpById, DeleteUser, GetContact, GetContributions, GetHelp, GetUsers } from "./controllers/admin.master.controller";
 
 class AdminRouting {
     public router: express.Router;
-    private upload = multer();
     constructor() {
         this.router = express.Router();
         this.configRoutes();
