@@ -10,7 +10,7 @@ Wincorona is an application developed by me for non profit during the 2nd phase 
 3. Ask for Help. If you are not satisfied with the search results you can post your needs in public and anyone visiting the app can view your post and can help accordingly.
 4. Contact. In case you want to contact the team or the developer, you can fill the form and post.
 5. Admin Panel. Can view total number of contributions made, people requested for help, people trying to contact and total number of users in the dashboard section. Search contribution with pincode in the contribution list section. Can view and edit list of users registered and contact list.
-* Registration and Login includes features like email verification and forget and reset password.
+> Features like Email verification and Forget and Reset password are also included.
 
 ## Technology Stack
 * Node.js - Javascript Runtime for Servers.
