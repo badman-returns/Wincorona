@@ -1,3 +1,7 @@
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/tsgoswami)
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/tsgoswami) [![Made With Love](https://img.shields.io/badge/Made%20With-Love-orange.svg)](https://github.com/tsgoswami)
+
+
 <h1 align="center">✨ Wincorona✨</h1>
 
 <p align="center">
@@ -15,13 +19,28 @@ Wincorona is an application developed by me for non profit during the 2nd phase 
 > Features like Email verification and Forget and Reset password are also included.
 
 ## Technology Stack
-* Node.js - Javascript Runtime for Servers.
-* React.js - A JavaScript library for building user interfaces
-* Material UI - React components for faster and easier web development.
-* MongoDB Cloud Atlas - Database Management on Cloud
-* Git Bash - GitCLI for Git Operations
-* POSTMAN - API Testing Tool
-* TypeScript -an open-source language which builds on JavaScript, one of the world’s most used tools, by adding static type definitions.
+<b>Frontned</b> : React.js
+<br>
+<b>Additional Libraries</b>
+  - Material UI
+  - Axios
+  - React Router DOM
+  - React Toast Notification
+  - JSON Web Token
+<br>
+<b>Backend</b>: Node.js 
+<br>
+<b>Language<b>: TypeScript
+<br>
+<b>Framework<b>: Express
+<br>
+<b>Database: MongoDB</b>
+<br>  
+<b>Authentication<b> : Basic Auth and JWT
+<br>
+<b>Deployement</b> : Heroku
+<br>
+
 
 
 ## Setup
