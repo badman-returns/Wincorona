@@ -14,7 +14,7 @@ Deployed Production Link - [Live URL]
 <br>
 Documentation generated using Postman - [API Documentation] 
 
-## Core Features
+## Features
 - Get oxygen supplier, blood plasma donor, etc. just by entering your pincode.
 - Post for Help if not satisfied with the search result.
 - Register and Login to become active contributor.
