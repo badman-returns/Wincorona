@@ -36,9 +36,11 @@ Wincorona is an application developed by me for non profit during the 2nd phase 
 <br>
 <b>Database: MongoDB</b>
 <br>  
-<b>Authentication<b> : Basic Auth and JWT
+<b>Authentication and Authorization<b> : Basic Auth, JWT and  Google Auth2.0
 <br>
 <b>Deployement</b> : Heroku
+<br>
+<b>Email Verification</b> : Nodemailer
 <br>
 
 
