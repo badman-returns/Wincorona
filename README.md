@@ -16,9 +16,10 @@ Documentation generated using Postman - [API Documentation]
 
 ## Features
 - Get oxygen supplier, blood plasma donor, etc. just by entering your pincode.
-- Post for Help if not satisfied with the search result.
+- Post for Help in Public if not satisfied with the search result.
 - Register and Login to become active contributor.
 - Contribute by posting information about oxygen supplier, blood plasma donor, etc. to help others.
+- Help others who are asking for help
 
 ## Technology Stack
 <b>Frontned</b> : React.js
