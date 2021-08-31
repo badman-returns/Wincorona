@@ -1,7 +1,7 @@
 {
   "name": "ab-covid-support-apis",
   "version": "1.0.0",
-  "description": "Artificial Brix Covid Support API",
+  "description": "Wincorona API",
   "engines": {
     "node": "12.16.3"
   },
@@ -14,7 +14,7 @@
     "start": "node ./dist/server.js",
     "local": "nodemon"
   },
-  "author": "Trishnangshu Goswami and Udaya",
+  "author": "Trishnangshu Goswami",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
