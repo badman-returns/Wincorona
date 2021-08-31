@@ -4,7 +4,7 @@ import { Response } from "express";
 import { AuthenticatedRequest, ResponseObject, User, MailRequestModel, TokenObject } from "../../interfaces";
 import { Users } from "../../models/users";
 import { Token } from "../../models/token";
-import { Mailer } from "../../utility/mailer";
+import { Mailer } from "../../utility";
 
 
 class PublicUserController {

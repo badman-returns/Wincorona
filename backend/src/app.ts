@@ -5,7 +5,7 @@ import logger from 'morgan';
 import mongoose from 'mongoose';
 import express, { NextFunction, Response, Request } from 'express';
 import { AdminRouter, PublicRouter } from './routes';
-import { DefaultAdminUser } from './utility/defaultAdmin';
+import { DefaultAdminUser } from './utility';
 const dotenv = require('dotenv');
 dotenv.config();
 
