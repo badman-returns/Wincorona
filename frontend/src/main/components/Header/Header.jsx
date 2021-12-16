@@ -14,6 +14,7 @@ const useStyles = makeStyles({
         '@media (max-width: 600px)': {
             fontSize: '13px',
         },
+        cursor: 'pointer',
     },
     text: {
         color: 'black',
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
         '@media (max-width: 600px)': {
             fontSize: '13px',
         },
-      },
+    },
 })
 const Header = () => {
     const history = useHistory();
@@ -61,11 +62,11 @@ const Header = () => {
         }
     }, [])
 
-    const logIn = ()=>{
+    const logIn = () => {
         history.push('/login');
         window.location.reload();
     }
-    const signUp = ()=>{
+    const signUp = () => {
         history.push('/register');
         window.location.reload();
     }
@@ -79,53 +80,61 @@ const Header = () => {
     }
     return (
 
-        <AppBar position="fixed" color='inherit'>
+        <AppBar position="fixed" color='inherit' style={{padding: '10px'}}>
             <Grid container alignItems='center' justify='center'>
                 <Grid item xs={11} md={10} >
                     <Grid container alignItems='center' justify='space-between'>
                         <Grid item>
                             <Grid container alignItems='center' justify='center' spacing={1}>
                                 <Grid item>
-                                <img src={VirusImage} alt='virus' />
+                                    <img src={VirusImage} alt='virus' />
 
                                 </Grid>
                                 <Grid item>
-                                <p className={classes.heading}>WIN CORONA</p>
+                                    <p className={classes.heading}
+                                        onClick={() => {
+                                            history.push('/');
+                                            window.location.reload();
+                                        }}>WIN CORONA</p>
 
                                 </Grid>
                             </Grid>
                         </Grid>
                         <Grid item>
-                            <Grid container justify="flex-end" alignItems="center" spacing={1}>
-                                <Grid item>
-                                    <p className={classes.text} 
-                                    onClick={() => {
-                                        history.push('/');
-                                        window.location.reload();
-                                    }}>
+                            <Grid container justify="flex-end" alignItems="center" spacing={1} className={classes.text}>
+                               
+                                {/* Home link is removed for UX improvement*/}
+
+                                {/* <Grid item>
+                                    <p className={classes.text}
+                                        onClick={() => {
+                                            history.push('/');
+                                            window.location.reload();
+                                        }}>
                                         Home
                                     </p>
-                                </Grid>
+                                </Grid> */}
+
                                 {isAuthenticated && (<Grid item>
-                                    <p className={classes.text} 
-                                    onClick={() => { 
-                                        history.push('/user/profile');
-                                        window.location.reload(); 
-                                    }}>
+                                    <p className={classes.text}
+                                        onClick={() => {
+                                            history.push('/user/profile');
+                                            window.location.reload();
+                                        }}>
                                         Profile
                                     </p>
                                 </Grid>)}
-                                {isAuthenticated ?(<Grid item>
-                                    <button className={classes.button} style={{backgroundColor:'#ff1744'}}  onClick={onHandleLogout} >Logout</button>
-                                </Grid>):(
+                                {isAuthenticated ? (<Grid item>
+                                    <button className={classes.button} style={{ backgroundColor: '#ff1744' }} onClick={onHandleLogout} >Logout</button>
+                                </Grid>) : (
                                     <>
-                                <Grid item>
-                                    <button className={classes.button} onClick={logIn} >LogIn</button>
-                                </Grid>
-                                <Grid item>
-                                <button className={classes.button}  color='primary' variant='contained' size='small' onClick={signUp} >SignUp</button>
-                            </Grid>
-                            </>
+                                        <Grid item>
+                                            <button className={classes.button} onClick={logIn} >LogIn</button>
+                                        </Grid>
+                                        <Grid item>
+                                            <button className={classes.button} color='primary' variant='contained' size='small' onClick={signUp} >SignUp</button>
+                                        </Grid>
+                                    </>
                                 )
                                 }
                             </Grid>
