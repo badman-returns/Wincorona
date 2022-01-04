@@ -25,7 +25,7 @@ const useStyles = makeStyles({
         '@media (max-width: 600px)': {
             padding: '4px 6px',
             margin: '10px',
-          },
+        },
     },
 
     seeMoreButton: {
@@ -38,6 +38,10 @@ const useStyles = makeStyles({
         fontSize: '14px',
         color: '#8692A6',
         cursor: 'pointer',
+        "&:hover": {
+            color: 'white',
+            backgroundColor: '#6045E2',
+        }
     },
     blurContainer: {
         height: '60px',
@@ -48,15 +52,15 @@ const useStyles = makeStyles({
     }
 })
 
-const HelpUs = ({getHelpPosts}) => {
+const HelpUs = ({ getHelpPosts }) => {
     const classes = useStyles();
     const history = useHistory();
-  const handelClick = () =>{
-    history.push('/help-us-posts');
-  }
-  const handelClickAskHelpPost =()=>{
-    history.push('/ask-for-help');
-}
+    const handelClick = () => {
+        history.push('/help-us-posts');
+    }
+    const handelClickAskHelpPost = () => {
+        history.push('/ask-for-help');
+    }
     return (
         <Grid>
             <Grid item xs={12}>
